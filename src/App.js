@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import MyTest from './components/my-test'
-import logo from './logo.svg';
+import React from 'react';
+import HomePage from './pages/HomePage/HomePage';
 import './App.scss';
 
 const App = () => {
-  return <MyTest />;
+  return <HomePage />;
 }
 
 export default App;
