@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MainNav from './../../components/MainNav/MainNav';
-import './HomePage.scss';
+import './SinglePlayer.scss';
 
-class HomePage extends Component {
+class SinglePlayer extends Component {
 
   constructor(props) {
     super(props)
@@ -13,13 +13,12 @@ class HomePage extends Component {
 
   render = () => {
       return (
-      <div className="home page">
+      <div className="single-player page">
         <MainNav changePage={this.props.changePage} />
-        <h1>Hello Home Page</h1>
-        <button className="btn" onClick={() => this.props.changePage('singlePlayer')}>Experiment Zone</button>
+        <h1>HELLO GameRoom</h1>
       </div>
     );
   };
 }
 
-export default HomePage;
+export default SinglePlayer;

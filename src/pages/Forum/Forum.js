@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MainNav from './../../components/MainNav/MainNav';
-import './HomePage.scss';
+import './Forum.scss';
 
-class HomePage extends Component {
+class Forum extends Component {
 
   constructor(props) {
     super(props)
@@ -13,13 +13,12 @@ class HomePage extends Component {
 
   render = () => {
       return (
-      <div className="home page">
+      <div className="forum page">
         <MainNav changePage={this.props.changePage} />
-        <h1>Hello Home Page</h1>
-        <button className="btn" onClick={() => this.props.changePage('singlePlayer')}>Experiment Zone</button>
+        <h1>HELLO FORUM</h1>
       </div>
     );
   };
 }
 
-export default HomePage;
+export default Forum;
