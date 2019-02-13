@@ -1,3 +1,18 @@
 .single-player {
   background-color: black;
+
+  .table-wrapper {
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 90%;
+    height: 200vh;
+    margin: auto;
+    transform: rotateX(0deg);
+
+    &.transition {
+      transform: rotateX(75deg);
+      margin-top: -350px;
+      transition: transform 2s;
+    }
+  }
 }

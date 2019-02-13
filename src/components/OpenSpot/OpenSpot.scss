@@ -1,0 +1,23 @@
+.open-spot {
+  box-sizing: border-box;
+  margin: auto;
+  height: 100%;
+  background-color: green;
+  padding-top: 300px;
+  display: flex;
+  justify-content: center;
+
+  .sit-here-cta {
+    width: 50%;
+    border-radius: 50%;
+    border: 1px solid black;
+    height: 25%;
+    background-color: white;
+    overflow: hidden;
+
+    h3 {
+      padding-top: 40%;
+      text-align: center;
+    }
+  }
+}
