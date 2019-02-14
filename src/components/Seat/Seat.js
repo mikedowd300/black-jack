@@ -18,7 +18,6 @@ class Seat extends Component {
   }
 
   render = () => {
-    console.log(this.props);
     const innerElem = this.props.seatData.isTaken
       ? <Player
           playerData={this.props.seatData.player}
