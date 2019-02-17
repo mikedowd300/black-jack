@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './OpenSpot.scss';
-import { PlayerData } from './../../game-data/PlayerData';
+import PlayerData from './../../game-data/PlayerData';
 
 class OpenSpot extends Component {
 
@@ -15,7 +15,7 @@ class OpenSpot extends Component {
     return (
       <div className="open-spot">
         <div className="sit-here-cta">
-          <h3 onClick={() =>this.props.addPlayer(PlayerData({}), this.props.seatNumber)}>SIT</h3>
+          <h3 onClick={() => this.props.addPlayer(PlayerData(), this.props.seatNumber)}>SIT</h3>
         </div>
       </div>
     );
