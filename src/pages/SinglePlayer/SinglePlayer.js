@@ -15,12 +15,12 @@ class SinglePlayer extends Component {
       transition: 'table-wrapper',
     };
 
-    this.setConditions = this.setConditions.bind(this);
+    this.setTable = this.setTable.bind(this);
     this.updateTableDataState = this.updateTableDataState.bind(this);
   }
 
   componentWillMount() {
-    this.setConditions();
+    this.setTable();
     setTimeout(() => (this.setState({ transition: 'table-wrapper transition' })), 10);
   }
 
@@ -28,11 +28,12 @@ class SinglePlayer extends Component {
     this.setState({ tableData });
   }
 
-  setConditions = () => {
-    this.setState({ tableData: TableData({}) });
+  setTable = () => {
+    this.setState({ tableData: new TableData() });
   }
 
   render = () => {
+    console.log(this.state.tableData);
     return (
       <div className="single-player page">
         <MainNav changePage={this.props.changePage} />
