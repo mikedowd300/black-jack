@@ -68,6 +68,7 @@ class Table extends Component {
   }
 
   render = () => {
+    console.log(this.props);
     const playerSeats = this.props.tableData.seats
       .map(
         (seat, i) => {
