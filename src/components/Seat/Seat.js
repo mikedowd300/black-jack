@@ -23,12 +23,14 @@ class Seat extends Component {
           playerData={this.props.seatData.player}
           updatePlayerData={this.updatePlayerData}
         />
-      : <OpenSpot addPlayer={this.props.seatData.addPlayer} seatNumber={this.props.seatData.seatNumber} />
-    return (
-      <div className="seat">
+      : <OpenSpot
+          addPlayer={this.props.seatData.addPlayer}
+          seatNumber={this.props.seatData.seatNumber}
+          shoe={this.props.seatData.shoe}
+        />
+    return <div className="seat">
       { innerElem }
       </div>
-    );
   }
 }
 

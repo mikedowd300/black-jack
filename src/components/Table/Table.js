@@ -68,12 +68,17 @@ class Table extends Component {
   }
 
   render = () => {
+    console.log(this.props.tableData.seats);
     const playerSeats = this.props.tableData.seats
       .map(
         (seat, i) => {
           seat.addPlayer = this.addPlayer;
           seat.removePlayer = this.removePlayer;
-          return <Seat key={`${seat.status}-${i}`} seatData={seat} updateSingleSeatData={this.updateSingleSeatData}/>
+          return <Seat
+              key={`${seat.status}-${i}`}
+              seatData={seat}
+              updateSingleSeatData={this.updateSingleSeatData}
+            />
         }
       );
 

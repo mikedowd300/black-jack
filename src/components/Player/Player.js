@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Hand from './../Hand/Hand';
 import './Player.scss';
 
 class Player extends Component {
@@ -10,24 +11,14 @@ class Player extends Component {
     this.updateBetSizeAndBankRoll = this.updateBetSizeAndBankRoll.bind(this);
   }
 
-  hands = this.props.playerData.handsData
+  hands = this.props.playerData.hands
     .map((hand,i) =>
       <div
         key={`${this.props.playerData.name}-${hand}-${i}`}
         className="hand"
       >
-        HAND
+        <Hand handData={hand}/>
       </div>);
-
-  actionOptions = this.props.playerData.actionOptionsData
-    .map((option,i) =>
-      <button
-        key={`${option.type}-${i}`}
-        className="action-option"
-        onClick={option.action}
-      >
-        {option.type}
-      </button>);
 
   updateBetSizeAndBankRoll(action) {
     const { incBet, decBet, betSize, bankRoll } = this.props.playerData;
@@ -39,7 +30,8 @@ class Player extends Component {
   }
 
   render = () => {
-    const { betSize, bankRoll, avatarUrl } = this.props.playerData;
+    console.log(this.props)
+    const { wagerSize, bankRoll, avatarUrl } = this.props.playerData;
     return (
       <div className="player">
         <div className="hands-wrapper">
@@ -50,7 +42,7 @@ class Player extends Component {
             className="inc-bet"
             onClick={() => this.updateBetSizeAndBankRoll('inc')}
           >+</button>
-          <div className="bet-size">{`${betSize}  `}</div>
+          <div className="bet-size">{`${wagerSize}  `}</div>
           <div className="bet-size">{bankRoll}</div>
           <button
             className="dec-bet"

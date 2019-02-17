@@ -6,8 +6,9 @@ const TableData = function() {
 
   const seatCount = Conditions.seatCount;
   const seats = [];
+  const shoe = new Shoe();
   for(let seatNumber = 0; seatNumber < seatCount; seatNumber++) {
-    seats.push(new SeatData(seatNumber));
+    seats.push(new SeatData(seatNumber, shoe));
   }
 
   let currentActiveSeatIndex = 0;
@@ -48,7 +49,7 @@ const TableData = function() {
   return {
     seats,
     dealer: {},
-    shoe: new Shoe(),
+    shoe,
     currentActiveSeatIndex,
     isDealersTurn,
     getNextActiveSeat,

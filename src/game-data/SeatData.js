@@ -1,13 +1,14 @@
 import PlayerData from './PlayerData';
 
-const SeatData = function(seatNumber) {
+const SeatData = function(seatNumber, shoe) {
 
   return {
     isTaken: false,
     isInHand: false,
     isActive: false,
     seatNumber,
-    player: new PlayerData(),
+    shoe,
+    player: new PlayerData(shoe),
   }
 };
 
