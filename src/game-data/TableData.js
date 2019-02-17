@@ -1,6 +1,9 @@
-module.exports.TableData = function(conditions) {
+import Conditions from './Conditions';
+import Shoe from './Shoe';
 
-  const seatCount = conditions && conditions.seatCount && conditions.seatCount > 0 ? conditions.seatCount : 7;
+const TableData = function() {
+
+  const seatCount = Conditions.seatCount;
   const seats = [];
   for(let seatNumber = 0; seatNumber < seatCount; seatNumber++) {
     seats.push({
@@ -14,7 +17,8 @@ module.exports.TableData = function(conditions) {
   return {
     seats,
     dealer: {},
-    deck:{},
-    conditions,
+    shoe:new Shoe(),
   }
 };
+
+export default TableData;

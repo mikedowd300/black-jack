@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MainNav from './../../components/MainNav/MainNav';
 import './SinglePlayer.scss';
-import { TableData } from './../../game-data/TableData';
+import TableData from './../../game-data/TableData';
 import Table from './../../components/Table/Table';
 
 class SinglePlayer extends Component {
