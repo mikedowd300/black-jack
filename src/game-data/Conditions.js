@@ -10,4 +10,12 @@ module.exports = {
   seatCount: 7,
   gameType: enums.FUN,
   shoesToPlay: 10000,
+  minBet: 2,
+  maxBet: 1000,
+  playerCanSurrender: true,
+  playerCanResplitAces: true,
+  canDoubleAny2Cards: true,
+  dealerFitsSoft17: true,
+  blackJackPays3to3: true,
+  blackJackPays6to5: false,
 };
