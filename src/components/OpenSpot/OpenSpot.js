@@ -12,10 +12,11 @@ class OpenSpot extends Component {
   }
 
   render = () => {
+    console.log(this.props)
     return (
       <div className="open-spot">
         <div className="sit-here-cta">
-          <h3 onClick={() => this.props.addPlayer(PlayerData(), this.props.seatNumber)}>SIT</h3>
+          <h3 onClick={() => this.props.addPlayer(PlayerData(this.props.shoe), this.props.seatNumber)}>SIT</h3>
         </div>
       </div>
     );

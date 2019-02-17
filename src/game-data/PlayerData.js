@@ -1,41 +1,19 @@
 import HandData from './HandData';
 
-const PlayerData = function(player) {
+const PlayerData = function(shoe) {
+
   let bankRoll = 98;
   let wagerSize = 2;
+  let activeHandIndex = 0;
   const setBankRoll = amount => bankRoll += amount;
   const setWagerSize = amount => wagerSize += amount;
-  const hit = () => console.log('HIT');
-  const stay = () => console.log('STAY');
-  const double = () => console.log('DOUBLE');
-  const split = () => console.log('SPLIT');
-  const surrender = () => console.log('SURRENDER');
-  const getInsuranceBetSize = betSize => betSize / 2;
+
+  const hit = function() {
+    shoe.dealCard();
+  };
   const takeEvenMoney = () => console.log('EVEN MONEY');
   const getInsurance = () => console.log('YOU ARE INSURED');
   const declineInsurance = () => console.log('NO INSURANCE');
-  const actionOptionsData = [
-    {
-      type: 'HIT',
-      action: hit,
-    },
-    {
-      type: 'STAY',
-      action: stay,
-    },
-    {
-      type: 'DOUBLE',
-      action: double,
-    },
-    {
-      type: 'SPLIT',
-      action: split,
-    },
-    {
-      type: 'SURRENDER',
-      action: surrender,
-    },
-  ];
 
   const insuranceOptionsData = [
     {
@@ -52,7 +30,10 @@ const PlayerData = function(player) {
     },
   ]
 
-  const addActionToOptionData = (action, type) => actionOptionsData.push({type, action});
+  //Matbe the next active hand could be part of the next active palyer;
+  const incActiveHandIndex = () => activeHandIndex++;
+
+
   const addActionToInsuanceData = (action, type) => insuranceOptionsData.push({type, action});
 
   const incBet = (betSize, bankRoll) => {
@@ -110,13 +91,10 @@ const PlayerData = function(player) {
     bankRoll,
     wagerSize,
     avatarUrl: 'https://fanfest.com/wp-content/uploads/2018/10/0e1587de-fd74-4e77-9264-62a0bf5e894a-nup_130296_0067-750x450.jpeg',
-    hands: [new HandData(bankRoll, wagerSize, setBankRoll, setWagerSize, actionOptionsData)],
-    actionOptionsData,
+    hands: [new HandData(wagerSize, bankRoll, setWagerSize, setBankRoll, shoe)],
     insuranceOptionsData,
-    getInsuranceBetSize,
     incBet,
     decBet,
-    addActionToOptionData,
     addActionToInsuanceData,
   }
 };
