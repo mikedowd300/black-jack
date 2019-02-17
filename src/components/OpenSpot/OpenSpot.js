@@ -4,8 +4,6 @@ import { PlayerData } from './../../game-data/PlayerData';
 
 class OpenSpot extends Component {
 
-  //The PlayerData takes an argument of a custom player, but custom players will be an add on feature.
-
   constructor(props) {
     super(props)
     this.state = {
