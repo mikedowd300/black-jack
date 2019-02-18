@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from './../Card/Card';
 import './Hand.scss';
 
 class Hand extends Component {
@@ -18,15 +19,18 @@ class Hand extends Component {
         {option.type}
       </button>);
 
+  cards = this.props.handData.cards.map(card => <Card key={`${card.code}`} srcUrl={card.image}/>);
 
   render = () => {
     console.log(this.props.handData);
     return (
       <div className="hand">
+        <div className="cards-wrapper">
+          { this.cards }
+        </div>
         <div className="action-options-wrapper">
           { this.actionOptions }
         </div>
-        <div className="cards">CARDS</div>
       </div>
     );
   }

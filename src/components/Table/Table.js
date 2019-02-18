@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Seat from './../Seat/Seat';
+import Dealer from './../Dealer/Dealer';
 import './Table.scss';
 
 class Table extends Component {
@@ -22,31 +23,15 @@ class Table extends Component {
     setTimeout(() => (this.playGame()), 2000);
   }
 
-  playGame() {
-    // console.log('SET CONDITIONS, DEFAULT FOR NOW');
-    // console.log('CONDITIONS WILL DICTATE TO EITHER PLAY USEING A WHILE LOOP OR A FOR LOOP');
-    // console.log('DECIDE IF ITS TIME TO SHUFFLE');
-    // console.log('USE TIMEOUT TO ALLOW USERS TO PLACE OR CHANGE BETS');
-    // console.log('SET ISINHAND OF ALL SEATS WITH BETSIZES GREATER THAN ZERO TO TRUE');
-    // console.log('BURN A CARD');
-    // console.log('DEAL');
-    // console.log('IF THE DEALER HAS AN ACE SHOWING OFFER INSURANCE');
-    // console.log('USE TIMEOUT AND STATUS BAR TO MAKE INSURANCE TIME VISIBLE');
-    // console.log('CHECK FOR DEALER BLACK JACK');
-    // console.log('IF DEALER HAS IT THEN PAY INSURED AND SET PLAYERS ISINHAND TO FALSE AND SKIP TO PAYOUT STEP');
-    // console.log('IF DEALER DOES NOT HAVE IT THEN COLLECT INSURANCE MONEY');
-    // console.log('COMPLETE PLAYERS HAND PLAYER BY PLAYER');
-    // console.log('THE HANDS SHOULD DECIDE WHICH OPTIONS IT HAS BASED ITS CARDS AND THE TABLE CONDITIONS');
-    // console.log('WHEN A PLAYER BUSTS, TAKE THE PLAYERS MONEY, DISCARD THE CARDS, SET ISINHAND TO FALSE, SET BUSTED TO TRUE');
-    // console.log('PLAY THE DEALERS CARDS');
-    // console.log('PAYOUT HANDS THAT ARE NOT BUSTED OF PLAYERS OF SEATS WHERE ISINHAND IS TRUE - THIS IS WHERE THE HAND SKIPS TO IF DEALER STARTS WITH BLACKJACK');
-    // console.log('DISCARD PLAYERS CARDS AFTER ALL PLAYERS ARE PAYED');
-    // console.log('LOOP REPEATS');
-    // console.log('IF LOOP WAS A FOR LOOP, DISPLAY STATS');
+  playGame() {}
+
+  // Not being used yet
+  updateDealer(dealer) {
+    this.props.updateTableDataState({...this.props.tableData, dealer});
   }
 
   updateSeatsData(seats) {
-    this.props.updateTableDataState({...this.props.table, seats});
+    this.props.updateTableDataState({...this.props.tableData, seats});
   }
 
   updateSingleSeatData(seat) {
@@ -68,7 +53,6 @@ class Table extends Component {
   }
 
   render = () => {
-    console.log(this.props.tableData.seats);
     const playerSeats = this.props.tableData.seats
       .map(
         (seat, i) => {
@@ -84,7 +68,12 @@ class Table extends Component {
 
     return (
       <div className={`${this.state.transition}`}>
-        <div className="dealer"></div>
+        <div className="dealer-wrapper">
+          <Dealer
+            dealerData={this.props.tableData.dealer}
+            updateDealer={this.updateDealer}
+          />
+        </div>
         <div className="players-wrapper">
           { playerSeats }
         </div>

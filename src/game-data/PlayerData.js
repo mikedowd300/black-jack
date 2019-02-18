@@ -5,21 +5,20 @@ const PlayerData = function(shoe) {
   let bankRoll = 98;
   let wagerSize = 2;
   let activeHandIndex = 0;
+  const hands = [new HandData(wagerSize, bankRoll, setWagerSize, setBankRoll, shoe)];
+
   const setBankRoll = amount => bankRoll += amount;
   const setWagerSize = amount => wagerSize += amount;
-
-  const hit = function() {
-    shoe.dealCard();
-  };
   const takeEvenMoney = () => console.log('EVEN MONEY');
   const getInsurance = () => console.log('YOU ARE INSURED');
   const declineInsurance = () => console.log('NO INSURANCE');
 
+  //Maybe the next active hand could be part of the next active palyer;
+  const incActiveHandIndex = () => activeHandIndex++;
+  const addActionToInsuanceData = (action, type) => insuranceOptionsData.push({type, action});
+
+  //The EVEN MONEY option is only if player has blackjack
   const insuranceOptionsData = [
-    {
-      type: 'EVEN MONEY',
-      action: takeEvenMoney,
-    },
     {
       type: 'YOU ARE INSURED',
       action: getInsurance,
@@ -30,11 +29,14 @@ const PlayerData = function(shoe) {
     },
   ]
 
-  //Matbe the next active hand could be part of the next active palyer;
-  const incActiveHandIndex = () => activeHandIndex++;
-
-
-  const addActionToInsuanceData = (action, type) => insuranceOptionsData.push({type, action});
+  const updateInsuranceOptionsData = () => {
+    if(hands[0].isBlackJack()) {
+      insuranceOptionsData.push({
+        type: 'EVEN MONEY',
+        action: takeEvenMoney,
+      });
+    }
+  }
 
   const incBet = (betSize, bankRoll) => {
     let inc = Math.min(1000, bankRoll);;
@@ -53,6 +55,11 @@ const PlayerData = function(shoe) {
     } else if(betSize < 5000) {
       inc = Math.min(500, bankRoll);
     }
+
+    console.log({
+      betSize: betSize + inc,
+      bankRoll: bankRoll - inc,
+    });
 
     return {
       betSize: betSize + inc,
@@ -80,6 +87,11 @@ const PlayerData = function(shoe) {
       dec = 500
     }
 
+    console.log({
+      betSize: betSize - dec,
+      bankRoll: bankRoll + dec,
+    });
+
     return {
       betSize: betSize - dec,
       bankRoll: bankRoll + dec,
@@ -91,7 +103,7 @@ const PlayerData = function(shoe) {
     bankRoll,
     wagerSize,
     avatarUrl: 'https://fanfest.com/wp-content/uploads/2018/10/0e1587de-fd74-4e77-9264-62a0bf5e894a-nup_130296_0067-750x450.jpeg',
-    hands: [new HandData(wagerSize, bankRoll, setWagerSize, setBankRoll, shoe)],
+    hands,
     insuranceOptionsData,
     incBet,
     decBet,
