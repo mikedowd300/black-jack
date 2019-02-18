@@ -1,7 +1,5 @@
 const HandData = function(wagerSize, bankRoll, setWagerSize, setBankRoll, shoe) {
 
-  console.log(shoe.cards);
-
   //This needs to be passed in or something
   const dealersHand = {value: 1, isBlackJack: () => true};
 
@@ -16,11 +14,21 @@ const HandData = function(wagerSize, bankRoll, setWagerSize, setBankRoll, shoe) 
       code: 'AD',
       value: 11
     },
+    {
+      image: 'http://deckofcardsapi.com/static/img/JS.png',
+      code: 'JS',
+      value: 10
+    },
+    {
+      image: 'http://deckofcardsapi.com/static/img/3S.png',
+      code: '3S',
+      value: 3
+    }
   ];
 
 
   const addActionToOptionData = (action, type) => actionOptionsData.push({type, action});
-  
+
   const hit = () => console.log('HIT');
   const stay = () => console.log('STAY');
   const double = () => console.log('DOUBLE');

@@ -33,7 +33,6 @@ class SinglePlayer extends Component {
   }
 
   render = () => {
-    console.log(this.state.tableData);
     return (
       <div className="single-player page">
         <MainNav changePage={this.props.changePage} />

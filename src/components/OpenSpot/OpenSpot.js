@@ -12,7 +12,6 @@ class OpenSpot extends Component {
   }
 
   render = () => {
-    console.log(this.props)
     return (
       <div className="open-spot">
         <div className="sit-here-cta">

@@ -8,8 +8,6 @@ const Shoe = function() {
     cards = cards.concat(Deck);
   }
 
-  console.log(Deck);
-
   const discardPile = [];
   const getCount = Conditions.getCount;
   const shufflePoint = Conditions.shufflePoint;

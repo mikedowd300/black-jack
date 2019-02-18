@@ -11,14 +11,9 @@ class Player extends Component {
     this.updateBetSizeAndBankRoll = this.updateBetSizeAndBankRoll.bind(this);
   }
 
+//This should just be a single hand depending on the activeHandIndex
   hands = this.props.playerData.hands
-    .map((hand,i) =>
-      <div
-        key={`${this.props.playerData.name}-${hand}-${i}`}
-        className="hand"
-      >
-        <Hand handData={hand}/>
-      </div>);
+    .map((hand,i) => <Hand key={`${this.props.playerData.name}-${hand}-${i}`} handData={hand}/>);
 
   updateBetSizeAndBankRoll(action) {
     const { incBet, decBet, betSize, bankRoll } = this.props.playerData;
@@ -49,7 +44,7 @@ class Player extends Component {
             onClick={() => this.updateBetSizeAndBankRoll('dec')}
           >-</button>
         </div>
-        <div className="action-options-wrapper">
+        <div className="action-options-wrapper" >
           { this.actionOptions }
         </div>
         <div className="image-wrapper">
